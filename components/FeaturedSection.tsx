@@ -4,7 +4,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useState } from "react";
 import { Link } from "@/components/ui/Link";
 import { Card } from "@/components/Card";
-import { ArrowRight, Clock, CheckCircle2, Zap, FileCode, Terminal, Package, Lock, Code, Search, Shield, Users } from "lucide-react";
+import {
+	ArrowRight,
+	Clock,
+	CheckCircle2,
+	Zap,
+	FileCode,
+	Terminal,
+	Package,
+	Lock,
+	Code,
+	Search,
+	Shield,
+	Users,
+	Folder, ArrowRightCircle, Settings, GitBranch, ArrowUpCircle
+} from "lucide-react";
 
 interface ProjectFeature {
   icon: React.JSX.Element;
@@ -29,40 +43,55 @@ interface FeaturedProject {
 export function FeaturedSection(): React.JSX.Element {
   const [activeTab, setActiveTab] = useState<string>("set-me-up");
 
-  const featuredProjects: FeaturedProject[] = [
-    {
-      name: "set-me-up",
-      description: "Automate and simplify the setup and maintenance of macOS or Debian Linux development environments.",
-      features: [
-        { icon: <Clock className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Cut Setup Time by 99%", description: "Reduce environment setup time from hours to minutes, allowing you to start being productive almost immediately." },
-        { icon: <CheckCircle2 className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Consistency Across Setups", description: "Ensure your development environment is set up the same way every time, reducing configuration errors." },
-        { icon: <Zap className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Highly Customizable", description: "Tailor the setup to your needs without being locked into a specific configuration." }
-      ],
-      components: [
-        { icon: <FileCode className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "set-me-up blueprint", description: "A customizable template for managing your setup" },
-        { icon: <Terminal className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "set-me-up installer", description: "A universal installer script for Mac or Debian-based machines" },
-        { icon: <Package className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "set-me-up Universal Modules", description: "A framework for setting up diverse development environments" }
-      ],
-      url: "https://github.com/dotbrains/set-me-up-docs"
-    },
-    {
-        name: "Guardrails",
-        description: "A modular, maintainable, and customizable security-compliant DevOps strategy designed for use with 👷🏼 Travis CI.",
-        features: [
-          { icon: <Shield className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Enhanced Security", description: "Integrate security practices directly into your CI/CD pipeline without sacrificing productivity." },
-          { icon: <Code className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Flexible Architecture", description: "Easily adapt to a wide range of CI/CD solutions and cloud providers, enhancing efficiency and enabling faster releases." },
-          { icon: <Users className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Team-Friendly", description: "Ideal for teams that can't leverage centralized CI/CD platforms or trunk-based development." }
-        ],
-        components: [
-          { icon: <Lock className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "AppScan Integration", description: "Static Application Security Testing (SAST) for comprehensive code analysis" },
-          { icon: <Zap className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Contrast Security", description: "Interactive Application Security Testing (IAST) for runtime vulnerability detection" },
-          { icon: <Search className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Detect Secrets", description: "Automated scanning for accidental secret exposure in your codebase" }
-        ],
-        url: "https://github.com/dotbrains/guardrails"
-      }
-  ];
+	const featuredProjects: FeaturedProject[] = [
+		{
+			name: "set-me-up",
+			description: "Automate and simplify the setup and maintenance of macOS or Debian Linux development environments.",
+			features: [
+				{ icon: <Clock className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Cut Setup Time by 99%", description: "Reduce environment setup time from hours to minutes, allowing you to start being productive almost immediately." },
+				{ icon: <CheckCircle2 className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Consistency Across Setups", description: "Ensure your development environment is set up the same way every time, reducing configuration errors." },
+				{ icon: <Zap className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Highly Customizable", description: "Tailor the setup to your needs without being locked into a specific configuration." }
+			],
+			components: [
+				{ icon: <FileCode className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "set-me-up blueprint", description: "A customizable template for managing your setup" },
+				{ icon: <Terminal className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "set-me-up installer", description: "A universal installer script for Mac or Debian-based machines" },
+				{ icon: <Package className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "set-me-up Universal Modules", description: "A framework for setting up diverse development environments" }
+			],
+			url: "https://github.com/dotbrains/set-me-up-docs"
+		},
+		{
+			name: "Guardrails",
+			description: "A modular, maintainable, and customizable security-compliant DevOps strategy designed for use with 👷🏼 Travis CI.",
+			features: [
+				{ icon: <Shield className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Enhanced Security", description: "Integrate security practices directly into your CI/CD pipeline without sacrificing productivity." },
+				{ icon: <Code className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Flexible Architecture", description: "Easily adapt to a wide range of CI/CD solutions and cloud providers, enhancing efficiency and enabling faster releases." },
+				{ icon: <Users className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Team-Friendly", description: "Ideal for teams that can't leverage centralized CI/CD platforms or trunk-based development." }
+			],
+			components: [
+				{ icon: <Lock className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "AppScan Integration", description: "Static Application Security Testing (SAST) for comprehensive code analysis" },
+				{ icon: <Zap className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Contrast Security", description: "Interactive Application Security Testing (IAST) for runtime vulnerability detection" },
+				{ icon: <Search className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Detect Secrets", description: "Automated scanning for accidental secret exposure in your codebase" }
+			],
+			url: "https://github.com/dotbrains/guardrails"
+		},
+		{
+			name: "ghw",
+			description: "A command-line wrapper tool around the GitHub CLI (gh) to enhance repository cloning into structured directories.",
+			features: [
+				{ icon: <Folder className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Enhanced Cloning", description: "Clone repositories into a structured directory format for better organization and management." },
+				{ icon: <ArrowRightCircle className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Pass-Through Commands", description: "Seamlessly pass through any other commands to the official GitHub CLI for a consistent experience." },
+				{ icon: <Settings className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Cross-Platform Compatibility", description: "Build executables for different platforms using PyInstaller, ensuring wide usage." }
+			],
+			components: [
+				{ icon: <GitBranch className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Custom Directory Structure", description: "Clone repositories into folders based on domain, owner, and repository for easy navigation." },
+				{ icon: <Terminal className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Dry Run Feature", description: "Preview commands before execution, ensuring you understand the effect before proceeding." },
+				{ icon: <ArrowUpCircle className="w-7 h-7 mr-5 text-[#78DA7D]" />, title: "Automatic Updates", description: "Easily update the CLI wrapper to the latest release with a simple command." }
+			],
+			url: "https://github.com/dotbrains/ghw"
+		}
+	];
 
-  return (
+	return (
     <motion.section
       id="featured-projects"
       className="w-full py-16 bg-gradient-to-b from-[#D8EAEC] to-white"
