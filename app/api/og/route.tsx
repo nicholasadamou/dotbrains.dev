@@ -25,6 +25,7 @@ const size = {
 	width: 1920,
 	height: 1080,
 };
+
 export const contentType = 'image/png';
 
 export async function GET() {
@@ -73,6 +74,9 @@ export async function GET() {
 		),
 		{
 			...size,
+			headers: {
+				'Content-Type': contentType,
+			}
 		}
 	);
 }
