@@ -21,7 +21,6 @@ const FONT_SIZES = {
 
 export const runtime = 'edge';
 
-export const alt = 'dotbrains.dev - Making the world better through software';
 const size = {
 	width: 1920,
 	height: 1080,
