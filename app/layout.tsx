@@ -28,6 +28,7 @@ export const metadata: Metadata = {
 		title: "dotbrains",
 		description: "A collective dedicated to the craft of software engineering whose mission is to make the world better through software.",
 		url: `${baseUrl}`,
+		siteName: "dotbrains",
 		images: [
 			{
 				url: `${baseUrl}/api/og`, // Use images array for Open Graph
