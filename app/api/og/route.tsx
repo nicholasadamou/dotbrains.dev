@@ -26,7 +26,7 @@ const size = {
 	height: 1080,
 };
 
-export const contentType = 'image/png';
+const contentType = 'image/png';
 
 export async function GET() {
 	return new ImageResponse(
