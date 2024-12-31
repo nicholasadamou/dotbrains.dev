@@ -29,25 +29,26 @@ export function AboutSection(): React.JSX.Element {
       viewport={{ once: true }}
     >
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid gap-6 lg:grid-cols-2 items-center">
-          <div>
-            <h2 className="text-4xl font-bold tracking-tighter sm:text-5xl text-[#0B4654] mb-4">About Us</h2>
-            <p className="text-xl text-[#6C848C] mb-6">
-              We are committed to building software that is ethical and user-centric. Protecting user data and privacy
-              is paramount, and we strive to develop solutions that enhance lives by automating mundane and
-              time-consuming tasks.
-            </p>
-            <blockquote className="border-l-4 pl-4 italic text-[#0B4654] text-lg">
-              &#34;The best way to predict the future is to invent it.&#34; - Alan Kay
-            </blockquote>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            {aboutItems.map((item, index) => (
-              <Card key={index} icon={item.icon} title={item.title} description={item.description} />
-            ))}
-          </div>
-        </div>
-      </div>
-    </motion.section>
+		  <div className="grid gap-6 lg:grid-cols-2 items-center">
+			  <div>
+				  <h2 className="text-4xl font-bold tracking-tighter sm:text-5xl text-[#0B4654] mb-4">About Us</h2>
+				  <p className="text-xl text-[#6C848C] mb-6">
+					  We are committed to building software that is ethical and user-centric. Protecting user data and
+					  privacy
+					  is paramount, and we strive to develop solutions that enhance lives by automating mundane and
+					  time-consuming tasks.
+				  </p>
+				  <blockquote className="border-l-4 pl-4 italic text-[#0B4654] text-lg">
+					  &#34;The best way to predict the future is to invent it.&#34; - Alan Kay
+				  </blockquote>
+			  </div>
+			  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+				  {aboutItems.map((item, index) => (
+					  <Card key={index} icon={item.icon} title={item.title} description={item.description}/>
+				  ))}
+			  </div>
+		  </div>
+	  </div>
+	</motion.section>
   );
 }

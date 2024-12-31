@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from "framer-motion";
-import React, { useState } from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import { Link } from "@/components/ui/Link";
 import { Card } from "@/components/Card";
 import {
@@ -43,7 +43,7 @@ interface FeaturedProject {
 export function FeaturedSection(): React.JSX.Element {
   const [activeTab, setActiveTab] = useState<string>("set-me-up");
 
-	const featuredProjects: FeaturedProject[] = [
+	const featuredProjects: FeaturedProject[] = useMemo(() => [
 		{
 			name: "set-me-up",
 			description: "Automate and simplify the setup and maintenance of macOS or Debian Linux development environments.",
@@ -89,7 +89,19 @@ export function FeaturedSection(): React.JSX.Element {
 			],
 			url: "https://github.com/dotbrains/ghw"
 		}
-	];
+	], []);
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setActiveTab(prevTab => {
+				const currentIndex = featuredProjects.findIndex(project => project.name === prevTab);
+				const nextIndex = (currentIndex + 1) % featuredProjects.length;
+				return featuredProjects[nextIndex].name;
+			});
+		}, 8000);
+
+		return () => clearInterval(interval);
+	}, [featuredProjects]);
 
 	return (
     <motion.section
@@ -161,39 +173,46 @@ export function FeaturedSection(): React.JSX.Element {
                         </motion.div>
                       ))}
                     </div>
-                    <motion.div
-                      className="space-y-6"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.6 }}
-                    >
-                      <h4 className="text-2xl font-bold text-[#0B4654]">Key Components</h4>
-                      <ul className="list-none text-[#6C848C] text-md sm:text-md md:text-md lg:text-lg space-y-4">
-                        {project.components.map((component, index) => (
-                          <li key={index} className="flex items-center">
-                            {component.icon}
-                            <span>
-                              <strong>{component.title}:</strong> {component.description}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="mt-8 text-center">
-                        <Link asChild className="bg-[#78DA7D] text-white hover:bg-[#0B4654] text-md lg:text-lg py-6 px-8">
-                          <a href={project.url} className="flex items-center" target="_blank">
-                            Learn More About {project.name}
-                            <ArrowRight className="ml-2 h-6 w-6" />
-                          </a>
-                        </Link>
-                      </div>
-                    </motion.div>
-                  </div>
-                </motion.div>
-              )
-            )}
-          </AnimatePresence>
-        </div>
-      </div>
-    </motion.section>
-  );
+					  <motion.div
+						  className="space-y-6"
+						  initial={{opacity: 0, y: 20}}
+						  animate={{opacity: 1, y: 0}}
+						  transition={{duration: 0.5, delay: 0.6}}
+					  >
+						  <h4 className="text-2xl font-bold text-[#0B4654]">Key Components</h4>
+						  <ul className="list-none text-[#6C848C] text-md sm:text-md md:text-md lg:text-lg space-y-4">
+							  {project.components.map((component, index) => (
+								  <li
+									  key={index}
+									  className="flex items-start"
+								  >
+									  <div className="flex-shrink-0">{component.icon}</div>
+									  <div>
+										  <h5 className="text-lg font-semibold text-[#0B4654]">
+											  {component.title}
+										  </h5>
+										  <p className="mt-1 text-md">{component.description}</p>
+									  </div>
+								  </li>
+							  ))}
+						  </ul>
+						  <div className="mt-8 text-center">
+							  <Link asChild
+									className="bg-[#78DA7D] text-white hover:bg-[#0B4654] text-md lg:text-lg py-6 px-8">
+								  <a href={project.url} className="flex items-center" target="_blank">
+									  Learn More About {project.name}
+									  <ArrowRight className="ml-2 h-6 w-6"/>
+								  </a>
+							  </Link>
+						  </div>
+					  </motion.div>
+				  </div>
+				</motion.div>
+					)
+			)}
+		  </AnimatePresence>
+		</div>
+	  </div>
+	</motion.section>
+	);
 }
