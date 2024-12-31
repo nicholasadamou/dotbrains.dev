@@ -91,17 +91,17 @@ export function FeaturedSection(): React.JSX.Element {
 		}
 	], []);
 
-	// useEffect(() => {
-	// 	const interval = setInterval(() => {
-	// 		setActiveTab(prevTab => {
-	// 			const currentIndex = featuredProjects.findIndex(project => project.name === prevTab);
-	// 			const nextIndex = (currentIndex + 1) % featuredProjects.length;
-	// 			return featuredProjects[nextIndex].name;
-	// 		});
-	// 	}, 8000);
-	//
-	// 	return () => clearInterval(interval);
-	// }, [featuredProjects]);
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setActiveTab(prevTab => {
+				const currentIndex = featuredProjects.findIndex(project => project.name === prevTab);
+				const nextIndex = (currentIndex + 1) % featuredProjects.length;
+				return featuredProjects[nextIndex].name;
+			});
+		}, 8000);
+
+		return () => clearInterval(interval);
+	}, [featuredProjects]);
 
 	return (
     <motion.section
