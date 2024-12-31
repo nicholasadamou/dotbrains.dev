@@ -15,7 +15,7 @@ export function Card({ icon, title, description, bgColor = "#F0F7F8" }: CardProp
 			className="p-6 rounded-lg shadow-lg bg-white"
 			style={{backgroundColor: bgColor}}
 		>
-			<div className="flex items-center mb-4">
+			<div className="flex items-center mb-2">
 				<div className="flex-shrink-0 w-8 h-8 mr-2 text-[#78DA7D]">{icon}</div>
 				<h3 className="text-[#0B4654] text-xl font-semibold">{title}</h3>
 			</div>
