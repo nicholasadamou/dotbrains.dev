@@ -11,12 +11,15 @@ interface CardProps {
 
 export function Card({ icon, title, description, bgColor = "#F0F7F8" }: CardProps): React.JSX.Element {
 	return (
-		<div className={`p-4 rounded-md`} style={{ backgroundColor: bgColor }}>
+		<div
+			className="p-6 rounded-lg shadow-lg bg-white"
+			style={{backgroundColor: bgColor}}
+		>
 			<div className="flex items-center mb-4">
-				<div className="w-6 h-6 mr-2 text-[#78DA7D]">{icon}</div>
-				<h3 className="text-[#0B4654] text-lg font-bold">{title}</h3>
+				<div className="flex-shrink-0 w-8 h-8 mr-2 text-[#78DA7D]">{icon}</div>
+				<h3 className="text-[#0B4654] text-xl font-semibold">{title}</h3>
 			</div>
-			<p className="text-[#6C848C]">{description}</p>
+			<p className="text-[#6C848C] text-base leading-relaxed">{description}</p>
 		</div>
 	);
 }

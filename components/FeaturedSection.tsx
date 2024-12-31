@@ -91,17 +91,17 @@ export function FeaturedSection(): React.JSX.Element {
 		}
 	], []);
 
-	useEffect(() => {
-		const interval = setInterval(() => {
-			setActiveTab(prevTab => {
-				const currentIndex = featuredProjects.findIndex(project => project.name === prevTab);
-				const nextIndex = (currentIndex + 1) % featuredProjects.length;
-				return featuredProjects[nextIndex].name;
-			});
-		}, 8000);
-
-		return () => clearInterval(interval);
-	}, [featuredProjects]);
+	// useEffect(() => {
+	// 	const interval = setInterval(() => {
+	// 		setActiveTab(prevTab => {
+	// 			const currentIndex = featuredProjects.findIndex(project => project.name === prevTab);
+	// 			const nextIndex = (currentIndex + 1) % featuredProjects.length;
+	// 			return featuredProjects[nextIndex].name;
+	// 		});
+	// 	}, 8000);
+	//
+	// 	return () => clearInterval(interval);
+	// }, [featuredProjects]);
 
 	return (
     <motion.section
@@ -112,7 +112,7 @@ export function FeaturedSection(): React.JSX.Element {
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
     >
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-2 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -130,7 +130,7 @@ export function FeaturedSection(): React.JSX.Element {
             {featuredProjects.map((project) => (
               <motion.button
                 key={project.name}
-                className={`px-4 py-2 rounded-full text-lg font-medium transition-all duration-300 ${
+                className={`px-3 py-2 rounded-full text-lg font-medium transition-all duration-300 ${
                   activeTab === project.name
                     ? "bg-[#78DA7D] text-white shadow-lg"
                     : "bg-white text-[#0B4654] hover:bg-[#F0F7F8]"
